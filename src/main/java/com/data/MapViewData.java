@@ -1,5 +1,6 @@
 package com.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapViewData {
@@ -12,5 +13,9 @@ public class MapViewData {
 	public void setPlaces(List<Place> places) {
 		this.places = places;
 	}
-	
+
+	public MapViewData() {
+		places = new ArrayList<Place>();
+	}
+
 }
