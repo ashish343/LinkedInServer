@@ -1,7 +1,10 @@
 package com.enums;
 
 public enum UrlParameter {
-			DEBUG("debug");
+			DEBUG("debug"),
+			TABLE_ID("tableId"),
+			ACTION("action"),
+			RESULT("result");
 
 	private String data;
 
