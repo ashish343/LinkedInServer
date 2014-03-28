@@ -64,7 +64,7 @@ public class CustomerHandler extends HttpServlet {
 				PusherTest.triggerPush("R1", Restaurant.REST_BOOK_TABLE.toString(), json,"");
 				
 				//TODO: Inform all other channels that this restaurant is booked.
-				String parseMsg = ParseNotificationHelper.getMessage(RestApi.UPDATE_VIEW.toString(), bookingData.getResturantId(), bookingData.getTableId());
+				String parseMsg = ParseNotificationHelper.getMessage(RestApi.UPDATE_VIEW.toString(), bookingData.getResturantId(), bookingData.getTableId() + '_' + bookingData.getBookingTime());
 				ParseNotificationHelper.notifyChannel(bookingData.getResturantId(), parseMsg, null);
 				result = true;
 			}
