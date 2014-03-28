@@ -72,7 +72,7 @@
     </head>
     
     <body>
-        <div class="border" style="margin: 10px">
+       
 		<div class='row' >					
 			<div class="col-lg-4">
 				<c:set var="tableId"  value="t1"/>
@@ -93,8 +93,7 @@
 			<c:set var="tableId"  value="t8"/>
 			<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
 			</div>			
-		</div>
-		</div>
+		</div>		
 		
 		<div class='row' style="margin-top: 0px" >
 			<div class="col-lg-7 border"  >
