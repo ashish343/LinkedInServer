@@ -89,6 +89,7 @@ public class CustomerHandler extends HttpServlet {
 				BookingData bookingData = gson.fromJson(data, BookingData.class);
 				ParseNotificationHelper.registerChannel(bookingData.getCustomerId(), bookingData.getResturantId(), null);
 			}
+			result = true;
 		}
 		
 		JSONObject bdo = new JSONObject();
