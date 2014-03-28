@@ -1,5 +1,7 @@
-
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <html lang="en">
     <head>		
         <link rel="shortcut icon" href="../favicon.ico"> 
@@ -7,39 +9,28 @@
         <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css" />
         <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-responsive.min.css" />       	
 		<script type="text/javascript" src="/resources/js/modernizr.custom.79639.js"></script>
+		<script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
 		 <%@ include file="/WEB-INF/jsp/common.jsp" %>
 		<noscript><link rel="stylesheet" type="text/css" href="/resources/css/noJS.css" /></noscript>
 		<style type="text/css">
 		.time{
-			color: graytext;
+			spanor: graytext;
+		}
+		.red{
+		background-color: red; 		
+		}
+		
+		.green{
+		background-color: green; 		
+		}
+		.row{
+		margin: 10px;
 		}</style>
-    </head>
-    
-    <body>
-        <div class="container">
-		<section class="main">
-				<div class="wrapper-demo">
-					<div id="dd" class="wrapper-dropdown-3" tabindex="1" style="width: 400px">
-						<div class='row' >
-						<div class='span2'>Transport</div>
-						<div class="span2 time">7:30 PM</div>
-						</div>
-						<ul class="dropdown">
-							<li><a href="#"><i class="icon-envelope icon-large"></i>Classic mail</a></li>
-							<li><a href="#"><i class="icon-truck icon-large"></i>UPS Delivery</a></li>
-							<li><a href="#"><i class="icon-plane icon-large"></i>Private jet</a></li>
-						</ul>
-					</div>
-				</div>
-			</section>			
-		</div>
-		<!-- jQuery if needed -->
-		<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jQuery/1.8.2/jQuery.min.js"></script> -->
-		<script type="text/javascript">
+		
+	<script type="text/javascript">
 		 P.when('jQuery').execute(function($){
 			 abc(this.$);
 			 });
-		 
 			function DropDown(el) {
 				this.dd = el;
 				this.initEvents();
@@ -67,5 +58,95 @@
 			};
 
 		</script>
+    </head>
+    
+    <body>
+        
+		<div class='row' >
+					
+			<div class="col-lg-4">
+				<c:set var="tableId"  value="t1"/>
+				<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+			</div>
+			<div class="col-lg-4 ">
+			<c:set var="tableId"  value="t2"/>
+				<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+			</div>
+			<div class="col-lg-4 ">
+			<c:set var="tableId"  value="t3"/>
+				<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+			</div>
+		</div>
+		
+		<div class='row' >
+			<div class="col-lg-2">
+			<c:set var="tableId"  value="t8"/>
+			<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+			</div>			
+		</div>
+		
+		<div class='row' >
+			<div class="col-lg-7" >
+				<div class="row">
+					<div class = "col-lg-4">
+					<c:set var="tableId"  value="t9"/>
+					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+					</div>
+					<div class = "col-lg-4">
+					<c:set var="tableId"  value="t15"/>
+					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+					</div>
+					<div class = "col-lg-4">
+					<c:set var="tableId"  value="t12"/>
+					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-lg-4">
+					<c:set var="tableId"  value="t10"/>
+					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+					</div>
+					<div class = "col-lg-4">
+					<c:set var="tableId"  value="t16"/>
+					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+					</div>
+					<div class = "col-lg-4">
+					<c:set var="tableId"  value="t13"/>
+					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-lg-4">
+					<c:set var="tableId"  value="t11"/>
+					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+					</div>
+					<div class = "col-lg-4">
+					<c:set var="tableId"  value="t17"/>
+					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+					</div>
+					<div class = "col-lg-4">
+					<c:set var="tableId"  value="t14"/>
+					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5" >
+				<div class="row">
+				<c:set var="tableId"  value="t6"/>
+					<div class="col-lg-6"><%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %></div>
+				<c:set var="tableId"  value="t7"/>
+					<div class="col-lg-6"><%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %></div>					
+				</div>
+				<div class="row">
+				<c:set var="tableId"  value="t4"/>
+					<div class="col-lg-6"><%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %></div>
+					<c:set var="tableId"  value="t5"/>
+					<div class="col-lg-6"><%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %></div>
+				</div>
+			</div>
+						
+		</div>		
+		
+		
     </body>
 </html>
