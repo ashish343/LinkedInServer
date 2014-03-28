@@ -21,7 +21,8 @@ public class ParseNotificationHelper {
 	public static void registerChannel(String customerId, String channel, ServletOutputStream outputStream) {
 		
 		HttpURLConnection con = null;
-		String reqbody = "{\"channels\": [\""+  channel + "\"]}";
+		//String reqbody = "{\"channels\": [\""+  channel + "\"]}";
+		String reqbody = "{\"channels\": {\"__op\":\"AddUnique\",\"objects\":[\""+  channel + "\"]}}";
 		try {
 			con = ConnectionUtilility.getHttpConnection(ParseRestApi.PARSE_HOST.toString() + ParseRestApi.INSTALLATION.toString() + "/" + customerId, "PUT");
 			initializeConnection(con);
