@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletContext;
@@ -15,9 +16,12 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.data.BookingData;
+import com.data.MapViewData;
+import com.database.DataConnection;
 import com.enums.UrlParameter;
 import com.google.gson.Gson;
 import com.mongodb.util.JSON;
@@ -40,24 +44,37 @@ public class RestaurantHandler extends HttpServlet {
 					.toString());
 			BookingData bd = gs.fromJson(bookingData, BookingData.class);
 			JSONArray arr = (JSONArray) JSON.parse(ridJson);
+			ArrayList<String> tmp = new ArrayList<String>();
+			for (int ix = 0; ix < arr.length(); ix++) {
+				try {
+					tmp.add(arr.getString(ix));
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+			MapViewData mapview = DataConnection.getMapViewData(bd, tmp);
+			ServletOutputStream out = response.getOutputStream();
+			String outString = gs.toJson(mapview);
+			out.write(outString.getBytes());
+			out.close();
+		} else {
 
+			String now = (new Date()).toString();
+			HttpSession session = request.getSession();
+			ServletContext sc = session.getServletContext();
+			String x = sc.getRealPath("/");
+			String host = request.getScheme() + "://" + request.getServerName()
+					+ ":" + request.getServerPort();
+
+			// ServletOutputStream out = response.getOutputStream();
+			// out.write(host.getBytes());
+			// out.flush();
+
+			request.setAttribute("path", host);
+			request.setAttribute("now", now);
+			request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(
+					request, response);
 		}
-
-		String now = (new Date()).toString();
-		HttpSession session = request.getSession();
-		ServletContext sc = session.getServletContext();
-		String x = sc.getRealPath("/");
-		String host = request.getScheme() + "://" + request.getServerName()
-				+ ":" + request.getServerPort();
-
-		// ServletOutputStream out = response.getOutputStream();
-		// out.write(host.getBytes());
-		// out.flush();
-
-		request.setAttribute("path", host);
-		request.setAttribute("now", now);
-		request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request,
-				response);
 	}
 
 	@Override

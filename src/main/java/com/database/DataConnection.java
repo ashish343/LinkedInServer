@@ -122,7 +122,6 @@ public class DataConnection {
 			places.add(p);
 		}
 		return mp;
-
 	}
 
 	public static HashMap<String, Restaurant> getAvailability(BookingData bd,
