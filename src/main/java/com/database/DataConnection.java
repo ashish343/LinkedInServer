@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.ServletOutputStream;
 
-import com.google.gson.Gson;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -51,11 +50,7 @@ public class DataConnection {
 					.println("Connection Information or DB information not present.. Exiting");
 			System.exit(1);
 		}
-
-		mongoClient = new MongoClient(new MongoClientURI(mongoURI)); // new
-																		// MongoClient(new
-																		// MongoClientURI(mongoURI));
-		gs = new Gson();
+		mongoClient = new MongoClient(new MongoClientURI(mongoURI));
 		mongoDb = mongoClient.getDB(db);
 	}
 
