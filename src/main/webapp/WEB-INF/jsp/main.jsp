@@ -21,7 +21,27 @@
 
         P.when('jQuery').execute(function($){
         	loadJS('/resources/js/favicon.js', function() {P.register('favicon');});
+        	loadJS('/resources/js/pusher.min.js', function() {P.register('pusher');});
         });
+
+        P.when('pusher').execute(function(){
+            myPusherFunc();
+        });
+        
+        var myPusherFunc = function() {
+            Pusher.log = function(message) {
+                if (window.console && window.console.log) {
+                    window.console.log(message);
+                }
+            };
+
+            var pusher = new Pusher('1f7298f8e64c81a0d7de');
+            var channel = pusher.subscribe('R1');
+            channel.bind('notify_table', function(data) {
+               alert(data);
+            });
+        }
+        
         
         var initializeFavicon = function($) {
         	favicon=new Favico({
