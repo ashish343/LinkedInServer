@@ -11,7 +11,6 @@
         <link rel="icon" type="image/png" href="/resources/img/icon.png" />
 		<link rel="stylesheet" type="text/css" href="/resources/css/default.css" />
 		<link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
-		<script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-responsive.min.css" />
 		<script src="/resources/js/modernizr.custom.js"></script>
