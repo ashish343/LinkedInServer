@@ -25,6 +25,11 @@
 		}
 		.row{
 		margin: 10px;
+		}
+		.no-margin{
+		margin: 0px;
+		padding-left: 0px;
+		padding-right: 30px;
 		}</style>
 		
 	<script type="text/javascript">
@@ -62,8 +67,7 @@
     
     <body>
         
-		<div class='row' >
-					
+		<div class='row' >					
 			<div class="col-lg-4">
 				<c:set var="tableId"  value="t1"/>
 				<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
@@ -79,65 +83,65 @@
 		</div>
 		
 		<div class='row' >
-			<div class="col-lg-2">
+			<div class="col-lg-4">
 			<c:set var="tableId"  value="t8"/>
 			<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
 			</div>			
 		</div>
 		
-		<div class='row' >
+		<div class='row ' >
 			<div class="col-lg-7" >
-				<div class="row">
-					<div class = "col-lg-4">
+				<div class="row no-margin">
+					<div class = "col-lg-4 no-margin">
 					<c:set var="tableId"  value="t9"/>
 					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
 					</div>
-					<div class = "col-lg-4">
+					<div class = "col-lg-4 no-margin">
 					<c:set var="tableId"  value="t15"/>
 					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
 					</div>
-					<div class = "col-lg-4">
+					<div class = "col-lg-4 no-margin">
 					<c:set var="tableId"  value="t12"/>
 					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
 					</div>
 				</div>
-				<div class="row">
-					<div class = "col-lg-4">
+				<div class="row no-margin">
+					<div class = "col-lg-4 no-margin">
 					<c:set var="tableId"  value="t10"/>
 					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
 					</div>
-					<div class = "col-lg-4">
+					<div class = "col-lg-4 no-margin">
 					<c:set var="tableId"  value="t16"/>
 					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
 					</div>
-					<div class = "col-lg-4">
+					<div class = "col-lg-4 no-margin">
 					<c:set var="tableId"  value="t13"/>
 					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
 					</div>
 				</div>
-				<div class="row">
-					<div class = "col-lg-4">
+				<div class="row no-margin">
+					<div class = "col-lg-4 no-margin">
 					<c:set var="tableId"  value="t11"/>
 					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
 					</div>
-					<div class = "col-lg-4">
+					<div class = "col-lg-4 no-margin">
 					<c:set var="tableId"  value="t17"/>
 					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
 					</div>
-					<div class = "col-lg-4">
+					<div class = "col-lg-4 no-margin">
 					<c:set var="tableId"  value="t14"/>
 					<%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-5" >
-				<div class="row">
+				<div class="row no-margin">
 				<c:set var="tableId"  value="t6"/>
 					<div class="col-lg-6"><%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %></div>
 				<c:set var="tableId"  value="t7"/>
 					<div class="col-lg-6"><%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %></div>					
 				</div>
-				<div class="row">
+				<div class="row no-margin">
 				<c:set var="tableId"  value="t4"/>
 					<div class="col-lg-6"><%@ include file="/WEB-INF/jsp/dashboard/tableInfo.jsp" %></div>
 					<c:set var="tableId"  value="t5"/>
