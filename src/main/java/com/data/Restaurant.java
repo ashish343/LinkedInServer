@@ -1,6 +1,7 @@
 package com.data;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -9,6 +10,7 @@ public class Restaurant {
 
 	private String restaurantId;
 	private Map<Integer, Integer> tableTypeCount;
+	private List<Table> tableList;
 
 	public Restaurant() {
 
