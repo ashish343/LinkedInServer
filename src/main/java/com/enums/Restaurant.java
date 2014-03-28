@@ -1,7 +1,9 @@
 package com.enums;
 
 public enum Restaurant {
-	MESSAGE("message");
+	MESSAGE("message"),
+	REST_BOOK_TABLE("notify_table"),
+	REST_MESSAGE("notify_chat");
 	
 	private String data;
 	

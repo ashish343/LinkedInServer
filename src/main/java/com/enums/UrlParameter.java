@@ -4,7 +4,8 @@ public enum UrlParameter {
 			DEBUG("debug"),
 			TABLE_ID("tableId"),
 			ACTION("action"),
-			RESULT("result");
+			RESULT("result"),
+			DATA("data");
 
 	private String data;
 

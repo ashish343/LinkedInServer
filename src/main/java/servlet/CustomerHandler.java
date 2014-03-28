@@ -17,7 +17,9 @@ import org.json.JSONObject;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.enums.Customer;
+import com.enums.Restaurant;
 import com.enums.UrlParameter;
+import com.test.PusherTest;
 
 @SuppressWarnings("serial")
 @WebServlet(name = "CustomerHandler", urlPatterns = { "/cust" })
@@ -31,14 +33,30 @@ public class CustomerHandler extends HttpServlet {
 		String action = request.getParameter(UrlParameter.ACTION.toString());
 		boolean result = false;
 		
+		
 		if(Customer.BOOK_TABLE.toString().equals(action)) {
-			String tableId = request.getParameter(UrlParameter.TABLE_ID.toString());
 			//TODO: Update DB.
-			//TODO: Send Push notification to Dashboard.
+			
+			
+			String data = request.getParameter(UrlParameter.DATA.toString());
+			String json = "{\"data\":\""
+					+ data.replace("\\\"", "\"").replace("\"",
+							"\\\"") + "\",\"name\":\""
+					+ Restaurant.REST_BOOK_TABLE.toString()
+					+ "\",\"channel\":\"" + "R1" + "\"}";
+			
+			PusherTest.triggerPush("R1", Restaurant.REST_BOOK_TABLE.toString(), json,"");
 			result = true;
 		} else if (Customer.CUSTOMER_MESSAGE.toString().equals(action)) {
+			
 			//TODO: Save the chat to DB.
-			//TODO: Send Push notification to Dashboard.
+			String data = request.getParameter(UrlParameter.DATA.toString());
+			String json = "{\"data\":\""
+					+ data.replace("\\\"", "\"").replace("\"",
+							"\\\"") + "\",\"name\":\""
+					+ Restaurant.REST_MESSAGE.toString()
+					+ "\",\"channel\":\"" + "R1" + "\"}";
+			PusherTest.triggerPush("R1", Restaurant.REST_MESSAGE.toString(), json,"");
 			result = true;
 		}
 		
