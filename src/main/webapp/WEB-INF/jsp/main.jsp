@@ -1,40 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>Blueprint: Vertical Icon Menu</title>
-		<meta name="description" content="Blueprint: Vertical Icon Menu" />
-		<meta name="keywords" content="Vertical Icon Menu, vertical menu, icons, menu, css" />
-		<meta name="author" content="Codrops" />
-		<link rel="shortcut icon" href="../favicon.ico">
-		<link rel="stylesheet" type="text/css" href="/resources/css/default.css" />
-		<link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
-		<script src="/resources/js/modernizr.custom.js"></script>
-	</head>
-	<body>
-		<div class="container">
-			<header class="clearfix">
-				<span>Blueprint</span>
-				<h1>Vertical Icon Menu</h1>
-				<nav>
-					<a href="http://tympanus.net/Blueprints/HorizontalDropDownMenu/" class="icon-arrow-left" data-info="previous Blueprint">Previous Blueprint</a>
-					<a href="http://tympanus.net/codrops/?p=14429" class="icon-drop" data-info="back to the Codrops article">back to the Codrops article</a>
-				</nav>
-			</header>
-			<ul class="cbp-vimenu">
-				<li><a href="#" class="icon-logo">Logo</a></li>
-				<li><a href="#" class="icon-archive">Archive</a></li>
-				<li><a href="#" class="icon-search">Search</a></li>
-				<li><a href="#" class="icon-pencil">Pencil</a></li>
-				<!-- Example for active item:
-				<li class="cbp-vicurrent"><a href="#" class="icon-pencil">Pencil</a></li>
-				-->
-				<li><a href="#" class="icon-location">Location</a></li>
-				<li><a href="#" class="icon-images">Images</a></li>
-				<li><a href="#" class="icon-download">Download</a></li>
-			</ul>
+<%@ include file="/WEB-INF/jsp/header.jsp" %>
+			
 			<div class="main">
 				<h2>Of their Magistrates</h2>
 				<p>Thirty families choose every year a magistrate, who was anciently called the Syphogrant, but is now called the Philarch; and over every ten Syphogrants, with the families subject to them, there is another magistrate, who was anciently called the Tranibore, but of late the Archphilarch.  All the Syphogrants, who are in number two hundred, choose the Prince out of a list of four who are named by the people of the four divisions of the city; but they take an oath, before they proceed to an election, that they will choose him whom they think most fit for the office: they give him their voices secretly, so that it is not known for whom every one gives his suffrage.  The Prince is for life, unless he is removed upon suspicion of some design to enslave the people.  The Tranibors are new chosen every year, but yet they are, for the most part, continued; all their other magistrates are only annual.  The Tranibors meet every third day, and oftener if necessary, and consult with the Prince either concerning the affairs of the State in general, or such private differences as may arise sometimes among the people, though that falls out but seldom.  There are always two Syphogrants called into the council chamber, and these are changed every day.  It is a fundamental rule of their government, that no conclusion can be made in anything that relates to the public till it has been first debated three several days in their council.  It is death for any to meet and consult concerning the State, unless it be either in their ordinary council, or in the assembly of the whole body of the people.</p>
