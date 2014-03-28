@@ -5,7 +5,8 @@ public enum UrlParameter {
 			TABLE_ID("tableId"),
 			ACTION("action"),
 			RESULT("result"),
-			DATA("data");
+			DATA("data"),
+			RESTAURANT_ID("rId");
 
 	private String data;
 

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.enums.Customer;
 import com.enums.Restaurant;
 import com.enums.UrlParameter;
+import com.parse.ParseNotificationHelper;
 import com.test.PusherTest;
 
 @SuppressWarnings("serial")
@@ -62,6 +63,11 @@ public class CustomerHandler extends HttpServlet {
 				PusherTest.triggerPush("R1", Restaurant.REST_MESSAGE.toString(), json,"");
 				result = true;
 			}
+		} else if(Customer.SUBSCRIBE.toString().equals(action)) {
+			String data = request.getParameter(UrlParameter.DATA.toString());
+			
+			String msg = ParseNotificationHelper.getMessage("UPDATE_STATUS", "Temp", "hello");
+			ParseNotificationHelper.notifyChannel("Temp", msg, null);
 		}
 		
 		JSONObject bdo = new JSONObject();
