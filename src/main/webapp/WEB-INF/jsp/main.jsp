@@ -1,95 +1,156 @@
 <%@ include file="/WEB-INF/jsp/header.jsp" %>
 			
+		<link rel="stylesheet" type="text/css" href="/resources/css/demo1.css" />
+		<link rel="stylesheet" type="text/css" href="/resources/css/component1.css" />
+		
 	<style>
 		.panel-title1{
 			height: 5px;
 		}
-	</style>			
+	</style>	
+	<script src="/resources/js/cbpFWTabs.js"></script>
+		<script>
+		 P.when('jQuery').execute(function($) {
+			 new CBPFWTabs( document.getElementById( 'tabs' ) );
+	       });
+			
+		</script>		
 	<div class="main">
-		
-		<div class='row' >					
-			<div class="col-lg-4">
-				<c:set var="tableId"  value="t1"/>
-				<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-			</div>
-			<div class="col-lg-4 ">
-			<c:set var="tableId"  value="t2"/>
-				<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-			</div>
-			<div class="col-lg-4 ">
-			<c:set var="tableId"  value="t3"/>
-				<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-			</div>
-		</div>
-		
-		<div class='row' style="margin-bottom: 0px" >
-			<div class="col-lg-4">
-			<c:set var="tableId"  value="t8"/>
-			<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-			</div>			
-		</div>		
-		
-		<div class='row' style="margin-top: 0px" >
-			<div class="col-lg-7 border"  >
-				<div class="row no-margin">
-					<div class = "col-lg-4 no-margin">
-					<c:set var="tableId"  value="t9"/>
-					<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-					</div>
-					<div class = "col-lg-4 no-margin">
-					<c:set var="tableId"  value="t15"/>
-					<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-					</div>
-					<div class = "col-lg-4 no-margin">
-					<c:set var="tableId"  value="t12"/>
-					<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-					</div>
-				</div>
-				<div class="row no-margin">
-					<div class = "col-lg-4 no-margin">
-					<c:set var="tableId"  value="t10"/>
-					<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-					</div>
-					<div class = "col-lg-4 no-margin">
-					<c:set var="tableId"  value="t16"/>
-					<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-					</div>
-					<div class = "col-lg-4 no-margin">
-					<c:set var="tableId"  value="t13"/>
-					<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-					</div>
-				</div>
-				<div class="row no-margin">
-					<div class = "col-lg-4 no-margin">
-					<c:set var="tableId"  value="t11"/>
-					<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-					</div>
-					<div class = "col-lg-4 no-margin">
-					<c:set var="tableId"  value="t17"/>
-					<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-					</div>
-					<div class = "col-lg-4 no-margin">
-					<c:set var="tableId"  value="t14"/>
-					<%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-5" >
-				<div class="row no-margin">
-				<c:set var="tableId"  value="t6"/>
-					<div class="col-lg-6"><%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %></div>
-				<c:set var="tableId"  value="t7"/>
-					<div class="col-lg-6"><%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %></div>					
-				</div>
-				<div class="row no-margin">
-				<c:set var="tableId"  value="t4"/>
-					<div class="col-lg-6"><%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %></div>
-					<c:set var="tableId"  value="t5"/>
-					<div class="col-lg-6"><%@ include file="/WEB-INF/jsp/dashboard/simpleTable.jsp" %></div>
-				</div>
-			</div>
+	
+	
+	<div id="tabs" class="tabs">
+				<nav>
+					<ul>
+						<li><a href="#section-1" class="icon-shop"><span>Table of 2</span></a></li>
+						<li><a href="#section-2" class="icon-cup"><span>Table of 4</span></a></li>
+						<li><a href="#section-3" class="icon-food"><span>Table of 6</span></a></li>
+						<li><a href="#section-4" class="icon-lab"><span>Table of 12</span></a></li>						
+					</ul>
+				</nav>
+				<div class="content">
+					<section id="section-1">
+					<div class="row">
+						<div class="col-lg-6">
+							<table class="table table-striped table-hover table-bordered">
+								<tr><th>Available Tables</th></tr>
+								<tr><td>Table 12<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+								<tr><td>Table 14<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+								<tr><td>Table 2<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+							</table>
+						</div>
+						<div class="col-lg-6">
+						<table class="table table-striped table-hover table-bordered">
+								<tr><th>Booked Tables</th></tr>
+								<tr><td class='booked'>								
+			          				 Table 2			          			        			
+			        			
+							      <div class="panel-body">
+							        <span class="glyphicon glyphicon-time"> Coming at 7.30							        
+							      </div>							      
+							    
+								
+								</td></tr>
+								<tr><td class= 'booked'>Table 15</td></tr>
+								<tr><td class= 'booked'>Table 12</td></tr>
+							</table>
+						</div>
 						
-		</div>		
+					</div>
+						
+					</section>
+					<section id="section-2">
+						<div class="row">
+						<div class="col-lg-6">
+							<table class="table table-striped table-hover table-bordered">
+								<tr><th>Available Tables</th></tr>
+								<tr><td>Table 12<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+								<tr><td>Table 14<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+								<tr><td>Table 2<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+							</table>
+						</div>
+						<div class="col-lg-6">
+						<table class="table table-striped table-hover table-bordered">
+								<tr><th>Booked Tables</th></tr>
+								<tr><td class='booked'>								
+			          				 Table 2			          			        			
+			        			
+							      <div class="panel-body">
+							        <span class="glyphicon glyphicon-time"> Coming at 7.30							        
+							      </div>							      
+							    
+								
+								</td></tr>
+								<tr><td class= 'booked'>Table 15</td></tr>
+								<tr><td class= 'booked'>Table 12</td></tr>
+							</table>
+						</div>
+						
+					</div>
+					</section>
+					<section id="section-3">
+						<div class="row">
+						<div class="col-lg-6">
+							<table class="table table-striped table-hover table-bordered">
+								<tr><th>Available Tables</th></tr>
+								<tr><td>Table 12<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+								<tr><td>Table 14<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+								<tr><td>Table 2<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+							</table>
+						</div>
+						<div class="col-lg-6">
+						<table class="table table-striped table-hover table-bordered">
+								<tr><th>Booked Tables</th></tr>
+								<tr><td class='booked'>								
+			          				 Table 2			          			        			
+			        			
+							      <div class="panel-body">
+							        <span class="glyphicon glyphicon-time"> Coming at 7.30							        
+							      </div>							      
+							    
+								
+								</td></tr>
+								<tr><td class= 'booked'>Table 15</td></tr>
+								<tr><td class= 'booked'>Table 12</td></tr>
+							</table>
+						</div>
+						
+					</div>
+					</section>
+					<section id="section-4">
+						<div class="row">
+						<div class="col-lg-6">
+							<table class="table table-striped table-hover table-bordered">
+								<tr><th>Available Tables</th></tr>
+								<tr><td>Table 12<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+								<tr><td>Table 14<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+								<tr><td>Table 2<div style="float: right;"><span class="glyphicon glyphicon-plus" ></span></div></td></tr>
+							</table>
+						</div>
+						<div class="col-lg-6">
+						<table class="table table-striped table-hover table-bordered">
+								<tr><th>Booked Tables</th></tr>
+								<tr><td class='booked'>								
+			          				 Table 2			          			        			
+			        			
+							      <div class="panel-body">
+							        <span class="glyphicon glyphicon-time"> Coming at 7.30							        
+							      </div>							      
+							    
+								
+								</td></tr>
+								<tr><td class= 'booked'>Table 15</td></tr>
+								<tr><td class= 'booked'>Table 14</td></tr>
+							</table>
+						</div>
+						
+					</div>
+					</section>
+					
+				</div><!-- /content -->
+			</div><!-- /tabs -->
+			
+		
+			
 						
 	</div>	
 					
