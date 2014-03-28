@@ -5,7 +5,7 @@ import com.parse.ParseNotificationHelper;
 public class ParseTest {
 
 	public static void main(String args[]) {
-		ParseNotificationHelper.registerChannel("Uu1MrS1cqR", "Temp", null);
+		ParseNotificationHelper.registerChannel("Uu1MrS1cqR", "Temp1", null);
 		try {
 			Thread.sleep(1000);
 		}catch(Exception e) {
