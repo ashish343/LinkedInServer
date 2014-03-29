@@ -671,7 +671,6 @@
                 type: 'rectangle',
                 animation:'fade'
             });
-        	favicon.badge(2);
         }
         function msToTime(ms){
             var secs = Math.floor(ms / 1000);
