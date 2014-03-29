@@ -11,7 +11,7 @@ public class Restaurant {
 	private Map<Integer, Integer> tableTypeCount;
 
 	public Restaurant() {
-
+		tableTypeCount = new HashMap<Integer, Integer>();
 	}
 
 	public String getRestaurantId() {

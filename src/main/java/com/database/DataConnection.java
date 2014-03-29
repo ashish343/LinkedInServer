@@ -90,7 +90,6 @@ public class DataConnection {
 				"$in", restaurantIds));
 
 		DBCursor cursor = restaurant.find(inquery);
-		System.out.println(inquery);
 		ArrayList<Restaurant> rr = new ArrayList<Restaurant>();
 		while (cursor.hasNext()) {
 			Restaurant d = gs.fromJson(cursor.next().toString(),
@@ -119,10 +118,10 @@ public class DataConnection {
 						.getTableTypeCount().get(bd.getNoOfPeople());
 			}
 
-			if (booked_table / total_count == 1)
+			if ((float) booked_table / total_count == 1)
 				status = "BOOKED";
-			else if (booked_table / total_count > 0.5)
-				status = "FILLING_FIRST";
+			else if ((float) booked_table / total_count >= 0.5)
+				status = "FILLING_FAST";
 			else
 				status = "AVAILABLE";
 			Place p = new Place();

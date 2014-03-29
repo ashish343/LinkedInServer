@@ -4,7 +4,7 @@ public class DatbaseOrderEntry {
 
 	private String tableId;
 	private int tableType;
-	private String restaurantId;
+	private String rId;
 	private String customerId;
 	private long startTime;
 	private long endTime;
@@ -26,11 +26,11 @@ public class DatbaseOrderEntry {
 	}
 
 	public String getRestaurantId() {
-		return restaurantId;
+		return rId;
 	}
 
 	public void setRestaurantId(String restaurantId) {
-		this.restaurantId = restaurantId;
+		this.rId = restaurantId;
 	}
 
 	public String getCustomerId() {
