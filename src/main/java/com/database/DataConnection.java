@@ -22,6 +22,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.util.JSON;
 import com.utility.RequestContext;
 
 public class DataConnection {
@@ -97,7 +98,11 @@ public class DataConnection {
 			rr.add(d);
 		}
 		return rr;
+	}
 
+	public static void insertOrderInDatabase(DatbaseOrderEntry doe) {
+		BasicDBObject bd0 = (BasicDBObject) JSON.parse(gs.toJson(doe));
+		current_order.insert(bd0);
 	}
 
 	public static MapViewData getMapViewData(BookingData bd,

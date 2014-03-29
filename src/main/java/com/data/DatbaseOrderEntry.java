@@ -9,6 +9,15 @@ public class DatbaseOrderEntry {
 	private long startTime;
 	private long endTime;
 
+	public DatbaseOrderEntry(BookingData bd) {
+		this.tableId = bd.getTableId();
+		this.tableType = bd.getNoOfPeople();
+		this.rId = bd.getResturantId();
+		this.customerId = bd.getCustomerId();
+		this.startTime = bd.getBookingTime();
+		this.endTime = startTime + 3600000;
+	}
+
 	public String getTableId() {
 		return tableId;
 	}
