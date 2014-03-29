@@ -8,20 +8,20 @@ import com.google.gson.Gson;
 
 public class Restaurant {
 
-	private String restaurantId;
+	private String rId;
 	private Map<Integer, Integer> tableTypeCount;
 	private List<Table> tableList;
 
 	public Restaurant() {
-
+		tableTypeCount = new HashMap<Integer, Integer>();
 	}
 
 	public String getRestaurantId() {
-		return restaurantId;
+		return rId;
 	}
 
 	public void setRestaurantId(String restaurantId) {
-		this.restaurantId = restaurantId;
+		this.rId = restaurantId;
 	}
 
 	public Map<Integer, Integer> getTableTypeCount() {

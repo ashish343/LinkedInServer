@@ -4,10 +4,10 @@ public class DatbaseOrderEntry {
 
 	private String tableId;
 	private int tableType;
-	private String restaurantId;
+	private String rId;
 	private String customerId;
-	private long start_time;
-	private long end_time;
+	private long startTime;
+	private long endTime;
 
 	public String getTableId() {
 		return tableId;
@@ -26,11 +26,11 @@ public class DatbaseOrderEntry {
 	}
 
 	public String getRestaurantId() {
-		return restaurantId;
+		return rId;
 	}
 
 	public void setRestaurantId(String restaurantId) {
-		this.restaurantId = restaurantId;
+		this.rId = restaurantId;
 	}
 
 	public String getCustomerId() {
@@ -42,19 +42,19 @@ public class DatbaseOrderEntry {
 	}
 
 	public long getStart_time() {
-		return start_time;
+		return startTime;
 	}
 
 	public void setStart_time(long start_time) {
-		this.start_time = start_time;
+		this.startTime = start_time;
 	}
 
 	public long getEnd_time() {
-		return end_time;
+		return endTime;
 	}
 
 	public void setEnd_time(long end_time) {
-		this.end_time = end_time;
+		this.endTime = end_time;
 	}
 
 }

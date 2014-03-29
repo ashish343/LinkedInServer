@@ -66,7 +66,7 @@ public class DataConnection {
 	}
 
 	private DataConnection() throws IOException {
-		mongoURI = "mongodb://<user>:<password>@oceanic.mongohq.com:10046/app23478545";
+		mongoURI = "mongodb://root:root@oceanic.mongohq.com:10046/app23478545";
 		db = "app23478545";
 
 		if (mongoURI == null || db == null) {
@@ -85,8 +85,10 @@ public class DataConnection {
 			ArrayList<String> restaurantIds) {
 		BasicDBObject inquery = new BasicDBObject();
 		Gson gs = new Gson();
+
 		inquery.put(UrlParameter.RESTAURANT_ID.toString(), new BasicDBObject(
-				"$in", gs.toJson(restaurantIds)));
+				"$in", restaurantIds));
+
 		DBCursor cursor = restaurant.find(inquery);
 		ArrayList<Restaurant> rr = new ArrayList<Restaurant>();
 		while (cursor.hasNext()) {
@@ -107,13 +109,19 @@ public class DataConnection {
 		List<Place> places = mp.getPlaces();
 		String status = "";
 		for (Restaurant r : list) {
-			Integer total_count = r.getTableTypeCount().get(bd.getNoOfPeople());
-			Integer booked_table = bookedDict.get(r.getRestaurantId())
-					.getTableTypeCount().get(bd.getNoOfPeople());
-			if (booked_table / total_count == 1)
+			int total_count = r.getTableTypeCount().get(bd.getNoOfPeople());
+			int booked_table = 0;
+			if (bookedDict.containsKey(r.getRestaurantId())
+					&& bookedDict.get(r.getRestaurantId()).getTableTypeCount()
+							.containsKey(bd.getNoOfPeople())) {
+				booked_table = bookedDict.get(r.getRestaurantId())
+						.getTableTypeCount().get(bd.getNoOfPeople());
+			}
+
+			if ((float) booked_table / total_count == 1)
 				status = "BOOKED";
-			else if (booked_table / total_count > 0.5)
-				status = "FILLING_FIRST";
+			else if ((float) booked_table / total_count >= 0.5)
+				status = "FILLING_FAST";
 			else
 				status = "AVAILABLE";
 			Place p = new Place();
@@ -132,7 +140,7 @@ public class DataConnection {
 		BasicDBObject inquery = new BasicDBObject();
 		Gson gs = new Gson();
 		inquery.put(UrlParameter.RESTAURANT_ID.toString(), new BasicDBObject(
-				"$in", gs.toJson(restaurantIds)));
+				"$in", restaurantIds));
 
 		DBCursor cursor = current_order.find(inquery);
 		HashMap<String, Restaurant> bookedDict = new HashMap<String, Restaurant>();
@@ -155,9 +163,11 @@ public class DataConnection {
 	}
 
 	public static void main(String[] args) {
+		ArrayList<String> tmp = new ArrayList<String>();
+		tmp.add("soddj");
+		System.out.println(gs.toJson(tmp));
 
 		System.out.println(System.currentTimeMillis());
 
 	}
-
 }
