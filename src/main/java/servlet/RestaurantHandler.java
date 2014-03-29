@@ -24,7 +24,6 @@ import com.data.MapViewData;
 import com.database.DataConnection;
 import com.enums.UrlParameter;
 import com.google.gson.Gson;
-import com.mongodb.util.JSON;
 
 @SuppressWarnings("serial")
 @WebServlet(name = "RestaurantHandler", urlPatterns = { "/rest" })
@@ -43,7 +42,13 @@ public class RestaurantHandler extends HttpServlet {
 			String ridJson = request.getParameter(UrlParameter.RESTAURANT_ID
 					.toString());
 			BookingData bd = gs.fromJson(bookingData, BookingData.class);
-			JSONArray arr = (JSONArray) JSON.parse(ridJson);
+			JSONArray arr = null;
+			try {
+				arr = new JSONArray(ridJson);
+			} catch (JSONException e1) {
+				e1.printStackTrace();
+			}
+
 			ArrayList<String> tmp = new ArrayList<String>();
 			for (int ix = 0; ix < arr.length(); ix++) {
 				try {

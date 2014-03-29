@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 
 public class Restaurant {
 
-	private String restaurantId;
+	private String rId;
 	private Map<Integer, Integer> tableTypeCount;
 
 	public Restaurant() {
@@ -15,11 +15,11 @@ public class Restaurant {
 	}
 
 	public String getRestaurantId() {
-		return restaurantId;
+		return rId;
 	}
 
 	public void setRestaurantId(String restaurantId) {
-		this.restaurantId = restaurantId;
+		this.rId = restaurantId;
 	}
 
 	public Map<Integer, Integer> getTableTypeCount() {
