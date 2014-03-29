@@ -656,7 +656,7 @@
                d=data;
                $('.available .' + data.tableId).addClass('hidden');
                $('.booked .' + data.tableId).removeClass('hidden');
-               $('.booked .' + data.tableId).find('.name-time').html(data.name +" @ "  + msToTime(data.time));
+               $('.booked .' + data.tableId).find('.name-time').html(data.name +" @ "  + new Date(data.bookingTime).getHours()+":"+new Date(data.bookingTime).getMinutes());
                $('.booked .' + data.tableId).find('.contact').html(data.phoneNo);
                $('.booked .' + data.tableId).find('.booking-id').html(data.bookingId);
                //alert(data);
