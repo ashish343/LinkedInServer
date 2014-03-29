@@ -22,8 +22,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.data.BookingData;
 import com.data.MapViewData;
 import com.database.DataConnection;
+import com.enums.RestApi;
 import com.enums.UrlParameter;
 import com.google.gson.Gson;
+import com.parse.ParseNotificationHelper;
 
 @SuppressWarnings("serial")
 @WebServlet(name = "RestaurantHandler", urlPatterns = { "/rest" })
@@ -62,7 +64,12 @@ public class RestaurantHandler extends HttpServlet {
 			String outString = gs.toJson(mapview);
 			out.write(outString.getBytes());
 			out.close();
-		} else {
+		} else if(action.equals("message")){
+			String bookingId = request.getParameter("bookingId");
+			String dataMessage = request.getParameter("data");
+			String parseMsg = ParseNotificationHelper.getMessage(RestApi.UPDATE_BOOKING.toString(), bookingId, dataMessage);
+			ParseNotificationHelper.notifyChannel(bookingId, parseMsg, null);
+		}else {
 
 			String now = (new Date()).toString();
 			HttpSession session = request.getSession();

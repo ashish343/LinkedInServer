@@ -21,8 +21,8 @@
 	<body>
 		<div class="container">
 			<header class="clearfix">
-				<span>Blueprint</span>
-				<h1>Vertical Icon Menu</h1>
+				<span>Dashboard</span>
+				<h1>Table Information</h1>
 				<nav>
 					<a href="http://tympanus.net/Blueprints/HorizontalDropDownMenu/" class="icon-arrow-left" data-info="previous Blueprint">Previous Blueprint</a>
 					<a href="http://tympanus.net/codrops/?p=14429" class="icon-drop" data-info="back to the Codrops article">back to the Codrops article</a>

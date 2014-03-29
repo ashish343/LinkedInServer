@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -16,14 +18,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.data.Restaurant;
+
 @SuppressWarnings("serial")
 @WebServlet(name = "Servlet", urlPatterns = { "/home" })
 public class DefaultController extends HttpServlet {
 	protected final Log logger = LogFactory.getLog(getClass());
 
 	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String now = (new Date()).toString();
 		HttpSession session = request.getSession();
 		ServletContext sc = session.getServletContext();
@@ -35,7 +38,13 @@ public class DefaultController extends HttpServlet {
 		// out.write(host.getBytes());
 		// out.flush();
 
-		request.setAttribute("path", host);
+		Restaurant rest = new Restaurant();
+		rest.setRestaurantId("R1");
+		Map<Integer, Integer> tableTypeCount = new HashMap<Integer, Integer>();
+		tableTypeCount.put(2, 5);
+		
+		rest.setTableTypeCount(tableTypeCount );
+		request.setAttribute("restaurant", host);
 		request.setAttribute("now", now);
 		request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request,
 				response);
