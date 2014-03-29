@@ -38,4 +38,12 @@ public class Restaurant {
 		Gson gs = new Gson();
 		System.out.println(gs.toJson(map));
 	}
+
+	public List<Table> getTableList() {
+		return tableList;
+	}
+
+	public void setTableList(List<Table> tableList) {
+		this.tableList = tableList;
+	}
 }

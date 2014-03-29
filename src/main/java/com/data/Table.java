@@ -7,6 +7,15 @@ public class Table {
 	String tableNo;
 	int tableType;
 	List<DatbaseOrderEntry> entry;
+	boolean available = true;
+
+	public boolean isAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
 
 	public String getTableId() {
 		return tableId;

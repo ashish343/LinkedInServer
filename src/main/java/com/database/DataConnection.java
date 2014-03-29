@@ -108,7 +108,7 @@ public class DataConnection {
 	public static MapViewData getMapViewData(BookingData bd,
 			ArrayList<String> restaurantIds) {
 		ArrayList<Restaurant> list = getRestaurantInformation(restaurantIds);
-		HashMap<String, Restaurant> bookedDict = getAvailability(bd,
+		HashMap<String, Restaurant> bookedDict = getUnAvailability(bd,
 				restaurantIds);
 		MapViewData mp = new MapViewData();
 		List<Place> places = mp.getPlaces();
@@ -137,7 +137,7 @@ public class DataConnection {
 		return mp;
 	}
 
-	public static HashMap<String, Restaurant> getAvailability(BookingData bd,
+	public static HashMap<String, Restaurant> getUnAvailability(BookingData bd,
 			ArrayList<String> restaurantIds) {
 		long lookBack = 60 * 60 * 1000;
 		long lookForward = 30 * 60 * 1000;
