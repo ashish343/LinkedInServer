@@ -17,6 +17,8 @@ import org.json.JSONObject;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.data.BookingData;
+import com.data.DatbaseOrderEntry;
+import com.database.DataConnection;
 import com.enums.Customer;
 import com.enums.RestApi;
 import com.enums.Restaurant;
@@ -32,69 +34,85 @@ public class CustomerHandler extends HttpServlet {
 	protected final Log logger = LogFactory.getLog(getClass());
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 		ServletOutputStream outputStream = response.getOutputStream();
 		String action = request.getParameter(UrlParameter.ACTION.toString());
 		boolean result = false;
-		
-		
-		if(Customer.BOOK_TABLE.toString().equals(action)) {
-			//TODO: Update DB.
-			//TODO: If update is successful return the message other wise 
-			
+		Gson gs = new Gson();
+
+		if (Customer.BOOK_TABLE.toString().equals(action)) {
+
+			// TODO: Update DB.
+			// TODO: If update is successful return the message other wise
+
 			String data = request.getParameter(UrlParameter.DATA.toString());
-			if(data != null) {
-				
+			if (data != null) {
+
 				String bookingID = BookingIdGenerator.generateUniqueOrderId();
 				Gson gson = new Gson();
-				BookingData bookingData = gson.fromJson(data, BookingData.class);
+				BookingData bookingData = gson
+						.fromJson(data, BookingData.class);
 				bookingData.setBookingId(bookingID);
-			
+				DatbaseOrderEntry doe = new DatbaseOrderEntry(bookingData);
+				DataConnection.insertOrderInDatabase(doe);
+
 				String jsonData = gson.toJson(bookingData);
-			
-				ParseNotificationHelper.registerChannel(bookingData.getCustomerId(), bookingID, null);
-			
+
+				ParseNotificationHelper.registerChannel(
+						bookingData.getCustomerId(), bookingID, null);
+
 				String json = "{\"data\":\""
-					+ jsonData.replace("\\\"", "\"").replace("\"",
-							"\\\"") + "\",\"name\":\""
-					+ Restaurant.REST_BOOK_TABLE.toString()
-					+ "\",\"channel\":\"" + "R1" + "\"}";
-			
-				PusherTest.triggerPush("R1", Restaurant.REST_BOOK_TABLE.toString(), json,"");
-				
-				//TODO: Inform all other channels that this restaurant is booked.
-				String parseMsg = ParseNotificationHelper.getMessage(RestApi.UPDATE_VIEW.toString(), bookingData.getResturantId(), bookingData.getTableId() + '_' + bookingData.getBookingTime()+'_'+bookingData.getCustomerId());
-				ParseNotificationHelper.notifyChannel(bookingData.getResturantId(), parseMsg, null);
+						+ jsonData.replace("\\\"", "\"").replace("\"", "\\\"")
+						+ "\",\"name\":\""
+						+ Restaurant.REST_BOOK_TABLE.toString()
+						+ "\",\"channel\":\"" + "R1" + "\"}";
+
+				PusherTest.triggerPush("R1",
+						Restaurant.REST_BOOK_TABLE.toString(), json, "");
+
+				// TODO: Inform all other channels that this restaurant is
+				// booked.
+				String parseMsg = ParseNotificationHelper.getMessage(
+						RestApi.UPDATE_VIEW.toString(),
+						bookingData.getResturantId(), bookingData.getTableId()
+								+ '_' + bookingData.getBookingTime() + '_'
+								+ bookingData.getCustomerId());
+				ParseNotificationHelper.notifyChannel(
+						bookingData.getResturantId(), parseMsg, null);
 				result = true;
 			}
 		} else if (Customer.CUSTOMER_MESSAGE.toString().equals(action)) {
-			
-			//TODO: Save the chat to DB.
+
+			// TODO: Save the chat to DB.
 			String data = request.getParameter(UrlParameter.DATA.toString());
-			if(data != null) {
+			if (data != null) {
 				String json = "{\"data\":\""
-					+ data.replace("\\\"", "\"").replace("\"",
-							"\\\"") + "\",\"name\":\""
-					+ Restaurant.REST_MESSAGE.toString()
-					+ "\",\"channel\":\"" + "R1" + "\"}";
-				PusherTest.triggerPush("R1", Restaurant.REST_MESSAGE.toString(), json,"");
+						+ data.replace("\\\"", "\"").replace("\"", "\\\"")
+						+ "\",\"name\":\"" + Restaurant.REST_MESSAGE.toString()
+						+ "\",\"channel\":\"" + "R1" + "\"}";
+				PusherTest.triggerPush("R1",
+						Restaurant.REST_MESSAGE.toString(), json, "");
 				result = true;
 			}
-		} else if(Customer.SUBSCRIBE.toString().equals(action)) {
-			
+		} else if (Customer.SUBSCRIBE.toString().equals(action)) {
+
 			String data = request.getParameter(UrlParameter.DATA.toString());
-			if(data != null) {
+			if (data != null) {
 				Gson gson = new Gson();
-				BookingData bookingData = gson.fromJson(data, BookingData.class);
-				ParseNotificationHelper.registerChannel(bookingData.getCustomerId(), bookingData.getResturantId(), null);
+				BookingData bookingData = gson
+						.fromJson(data, BookingData.class);
+				ParseNotificationHelper.registerChannel(
+						bookingData.getCustomerId(),
+						bookingData.getResturantId(), null);
 			}
 			result = true;
 		}
-		
+
 		JSONObject bdo = new JSONObject();
 		try {
-			bdo.put(UrlParameter.RESULT.toString(),result);
+			bdo.put(UrlParameter.RESULT.toString(), result);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
