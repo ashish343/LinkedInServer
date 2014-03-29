@@ -16,12 +16,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.data.BookingData;
-import com.data.DatbaseOrderEntry;
 import com.enums.Customer;
 import com.enums.Restaurant;
 import com.enums.UrlParameter;
-import com.google.gson.Gson;
 import com.parse.ParseNotificationHelper;
 import com.test.PusherTest;
 
@@ -37,15 +34,9 @@ public class CustomerHandler extends HttpServlet {
 		ServletOutputStream outputStream = response.getOutputStream();
 		String action = request.getParameter(UrlParameter.ACTION.toString());
 		boolean result = false;
-		Gson gs = new Gson();
 
 		if (Customer.BOOK_TABLE.toString().equals(action)) {
 			// TODO: Update DB.
-			String bookingData = request.getParameter(UrlParameter.DATA
-					.toString());
-
-			BookingData bd = gs.fromJson(bookingData, BookingData.class);
-			DatbaseOrderEntry doe = new DatbaseOrderEntry(bd);
 
 			String data = request.getParameter(UrlParameter.DATA.toString());
 			if (data != null) {
